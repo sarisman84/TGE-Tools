@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{DBC7D3B0-C769-FE86-B024-12DB9C6585D7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Application">
+      <UniqueIdentifier>{1EA4C00C-0A88-8162-73E8-7BB55FEB6BE4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Core">
+      <UniqueIdentifier>{130D9B61-7FC2-1357-08B7-0D2E746B0A5B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\GraphicsEngine">
+      <UniqueIdentifier>{D1098A56-3D76-4551-066A-DDAE729567B9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\GraphicsEngine\Camera">
+      <UniqueIdentifier>{2949D84E-1504-C8FA-BEBB-4045AA55128B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\GraphicsEngine\GraphicsFrameworks">
+      <UniqueIdentifier>{12247048-FEA0-638B-271E-649F13FAFF1E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\GraphicsEngine\Renderers">
+      <UniqueIdentifier>{EAFB0CF6-56DF-1B36-5FE2-4972CB44E286}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Math">
+      <UniqueIdentifier>{944DA061-0003-1957-89F7-122EF5AB0F5B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Models">
+      <UniqueIdentifier>{2E95DE4B-9A55-5A82-6390-A3FFCF0F9F5E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene">
+      <UniqueIdentifier>{386D1796-24D0-A63A-CD55-DFF0B99772BD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Shaders">
+      <UniqueIdentifier>{B4970385-A065-F78A-89F9-67B17566D3EF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\ToolsInterface">
+      <UniqueIdentifier>{CC652D5E-38D2-E858-01C6-80B66DF10AC1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\WindowManagement">
+      <UniqueIdentifier>{3FEE6F76-AB25-B80D-B42F-1C3120E6DE06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External">
+      <UniqueIdentifier>{089DB854-F469-1360-1D83-010809AF48EE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External\DirectXTex">
+      <UniqueIdentifier>{5BDED392-C73F-B1A0-50AD-F752BC0DE85F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External\DirectXTex\DDSTextureLoader">
+      <UniqueIdentifier>{4DD447CD-39BB-09C5-E20B-70E2CED1822B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\tools\source\Engine\Application\Application.h">
+      <Filter>Engine\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\Application\ApplicationEntryPoint.h">
+      <Filter>Engine\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\Core\EngineCore.h">
+      <Filter>Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\Core\EngineSettings.h">
+      <Filter>Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\Engine.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\GraphicsEngine\Camera\Camera.h">
+      <Filter>Engine\GraphicsEngine\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\GraphicsEngine\GraphicsEngine.h">
+      <Filter>Engine\GraphicsEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\GraphicsEngine\GraphicsFrameworks\DX11Framework.h">
+      <Filter>Engine\GraphicsEngine\GraphicsFrameworks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\GraphicsEngine\Renderers\ForwardRenderer.h">
+      <Filter>Engine\GraphicsEngine\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\Math\Matrix.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\Math\Matrix3x3.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\Math\Matrix4x4.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\Math\Quaternion.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\Math\Transform.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\Math\Vector.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\Math\Vector2.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\Math\Vector3.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\Math\Vector4.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\Math\Vertex.h">
+      <Filter>Engine\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\Models\Model.h">
+      <Filter>Engine\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\Models\ModelFactory.h">
+      <Filter>Engine\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\Models\ModelInstance.h">
+      <Filter>Engine\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\Scene\Scene.h">
+      <Filter>Engine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\ToolsInterface\ToolsInterface.h">
+      <Filter>Engine\ToolsInterface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\WindowManagement\Win32Window.h">
+      <Filter>Engine\WindowManagement</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\Engine\stdafx.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\External\DirectXTex\DDSTextureLoader\DDSTextureLoader11.h">
+      <Filter>External\DirectXTex\DDSTextureLoader</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\tools\source\Engine\Application\Application.cpp">
+      <Filter>Engine\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\Engine\Core\EngineSettings.cpp">
+      <Filter>Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\Engine\GraphicsEngine\Camera\Camera.cpp">
+      <Filter>Engine\GraphicsEngine\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\Engine\GraphicsEngine\GraphicsEngine.cpp">
+      <Filter>Engine\GraphicsEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\Engine\GraphicsEngine\GraphicsFrameworks\DX11Framework.cpp">
+      <Filter>Engine\GraphicsEngine\GraphicsFrameworks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\Engine\GraphicsEngine\Renderers\ForwardRenderer.cpp">
+      <Filter>Engine\GraphicsEngine\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\Engine\Math\Math.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\Engine\Math\Transform.cpp">
+      <Filter>Engine\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\Engine\Models\Model.cpp">
+      <Filter>Engine\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\Engine\Models\ModelFactory.cpp">
+      <Filter>Engine\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\Engine\Models\ModelInstance.cpp">
+      <Filter>Engine\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\Engine\Scene\Scene.cpp">
+      <Filter>Engine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\Engine\WindowManagement\Win32Window.cpp">
+      <Filter>Engine\WindowManagement</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\Engine\stdafx.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\External\DirectXTex\DDSTextureLoader\DDSTextureLoader11.cpp">
+      <Filter>External\DirectXTex\DDSTextureLoader</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\tools\source\Engine\Shaders\PixelShader.ps.hlsl">
+      <Filter>Engine\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\tools\source\Engine\Shaders\VertexShader.vs.hlsl">
+      <Filter>Engine\Shaders</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\tools\source\Engine\Shaders\ShaderStructs.hlsli">
+      <Filter>Engine\Shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Distribution|x64">
+      <Configuration>Distribution</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DBC7D3B0-C769-FE86-B024-12DB9C6585D7}</ProjectGuid>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Engine</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Distribution|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Distribution|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\lib\</OutDir>
+    <IntDir>..\int-bin\Debug\Engine\</IntDir>
+    <TargetName>Engine_Debug</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\lib\</OutDir>
+    <IntDir>..\int-bin\Release\Engine\</IntDir>
+    <TargetName>Engine_Release</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Distribution|x64'">
+    <OutDir>..\lib\</OutDir>
+    <IntDir>..\int-bin\Distribution\Engine\</IntDir>
+    <TargetName>Engine_Distribution</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>..\tools\source\Engine;..\tools\source\Engine\Application;..\tools\source\Engine\Core;..\tools\source\Engine\GraphicsEngine;..\tools\source\Engine\Math;..\tools\source\Engine\Models;..\tools\source\Engine\Scene;..\tools\source\Engine\Shaders;..\tools\source\Engine\ToolsInterface;..\tools\source\Engine\WindowManagement;..\tools\source\Engine\GraphicsEngine\Camera;..\tools\source\Engine\GraphicsEngine\GraphicsFrameworks;..\tools\source\Engine\GraphicsEngine\Renderers;..\tools\source\External\simpleson;..\tools\source\External\DirectXTex\DDSTextureLoader;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Disabled</Optimization>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>d3d11.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>..\tools\source\Engine;..\tools\source\Engine\Application;..\tools\source\Engine\Core;..\tools\source\Engine\GraphicsEngine;..\tools\source\Engine\Math;..\tools\source\Engine\Models;..\tools\source\Engine\Scene;..\tools\source\Engine\Shaders;..\tools\source\Engine\ToolsInterface;..\tools\source\Engine\WindowManagement;..\tools\source\Engine\GraphicsEngine\Camera;..\tools\source\Engine\GraphicsEngine\GraphicsFrameworks;..\tools\source\Engine\GraphicsEngine\Renderers;..\tools\source\External\simpleson;..\tools\source\External\DirectXTex\DDSTextureLoader;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Disabled</Optimization>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>d3d11.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Distribution|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>..\tools\source\Engine;..\tools\source\Engine\Application;..\tools\source\Engine\Core;..\tools\source\Engine\GraphicsEngine;..\tools\source\Engine\Math;..\tools\source\Engine\Models;..\tools\source\Engine\Scene;..\tools\source\Engine\Shaders;..\tools\source\Engine\ToolsInterface;..\tools\source\Engine\WindowManagement;..\tools\source\Engine\GraphicsEngine\Camera;..\tools\source\Engine\GraphicsEngine\GraphicsFrameworks;..\tools\source\Engine\GraphicsEngine\Renderers;..\tools\source\External\simpleson;..\tools\source\External\DirectXTex\DDSTextureLoader;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Disabled</Optimization>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>d3d11.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\tools\source\Engine\Application\Application.h" />
+    <ClInclude Include="..\tools\source\Engine\Application\ApplicationEntryPoint.h" />
+    <ClInclude Include="..\tools\source\Engine\Core\EngineCore.h" />
+    <ClInclude Include="..\tools\source\Engine\Core\EngineSettings.h" />
+    <ClInclude Include="..\tools\source\Engine\Engine.h" />
+    <ClInclude Include="..\tools\source\Engine\GraphicsEngine\Camera\Camera.h" />
+    <ClInclude Include="..\tools\source\Engine\GraphicsEngine\GraphicsEngine.h" />
+    <ClInclude Include="..\tools\source\Engine\GraphicsEngine\GraphicsFrameworks\DX11Framework.h" />
+    <ClInclude Include="..\tools\source\Engine\GraphicsEngine\Renderers\ForwardRenderer.h" />
+    <ClInclude Include="..\tools\source\Engine\Math\Matrix.h" />
+    <ClInclude Include="..\tools\source\Engine\Math\Matrix3x3.h" />
+    <ClInclude Include="..\tools\source\Engine\Math\Matrix4x4.h" />
+    <ClInclude Include="..\tools\source\Engine\Math\Quaternion.h" />
+    <ClInclude Include="..\tools\source\Engine\Math\Transform.h" />
+    <ClInclude Include="..\tools\source\Engine\Math\Vector.h" />
+    <ClInclude Include="..\tools\source\Engine\Math\Vector2.h" />
+    <ClInclude Include="..\tools\source\Engine\Math\Vector3.h" />
+    <ClInclude Include="..\tools\source\Engine\Math\Vector4.h" />
+    <ClInclude Include="..\tools\source\Engine\Math\Vertex.h" />
+    <ClInclude Include="..\tools\source\Engine\Models\Model.h" />
+    <ClInclude Include="..\tools\source\Engine\Models\ModelFactory.h" />
+    <ClInclude Include="..\tools\source\Engine\Models\ModelInstance.h" />
+    <ClInclude Include="..\tools\source\Engine\Scene\Scene.h" />
+    <ClInclude Include="..\tools\source\Engine\ToolsInterface\ToolsInterface.h" />
+    <ClInclude Include="..\tools\source\Engine\WindowManagement\Win32Window.h" />
+    <ClInclude Include="..\tools\source\Engine\stdafx.h" />
+    <ClInclude Include="..\tools\source\External\DirectXTex\DDSTextureLoader\DDSTextureLoader11.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\tools\source\Engine\Application\Application.cpp" />
+    <ClCompile Include="..\tools\source\Engine\Core\EngineSettings.cpp" />
+    <ClCompile Include="..\tools\source\Engine\GraphicsEngine\Camera\Camera.cpp" />
+    <ClCompile Include="..\tools\source\Engine\GraphicsEngine\GraphicsEngine.cpp" />
+    <ClCompile Include="..\tools\source\Engine\GraphicsEngine\GraphicsFrameworks\DX11Framework.cpp" />
+    <ClCompile Include="..\tools\source\Engine\GraphicsEngine\Renderers\ForwardRenderer.cpp" />
+    <ClCompile Include="..\tools\source\Engine\Math\Math.cpp" />
+    <ClCompile Include="..\tools\source\Engine\Math\Transform.cpp" />
+    <ClCompile Include="..\tools\source\Engine\Models\Model.cpp" />
+    <ClCompile Include="..\tools\source\Engine\Models\ModelFactory.cpp" />
+    <ClCompile Include="..\tools\source\Engine\Models\ModelInstance.cpp" />
+    <ClCompile Include="..\tools\source\Engine\Scene\Scene.cpp" />
+    <ClCompile Include="..\tools\source\Engine\WindowManagement\Win32Window.cpp" />
+    <ClCompile Include="..\tools\source\Engine\stdafx.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\External\DirectXTex\DDSTextureLoader\DDSTextureLoader11.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\tools\source\Engine\Shaders\PixelShader.ps.hlsl">
+      <ShaderType>Pixel</ShaderType>
+      <ObjectFileOutput>D:\Projects\Git\TGE-Tools\tools\EngineResources/Assets/Shaders/PixelShader.ps.cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="..\tools\source\Engine\Shaders\VertexShader.vs.hlsl">
+      <ShaderType>Vertex</ShaderType>
+      <ObjectFileOutput>D:\Projects\Git\TGE-Tools\tools\EngineResources/Assets/Shaders/VertexShader.vs.cso</ObjectFileOutput>
+      <AdditionalOptions>/WX %(AdditionalOptions)</AdditionalOptions>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\tools\source\Engine\Shaders\ShaderStructs.hlsli" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="simpleson.vcxproj">
+      <Project>{9FF3AC00-0B5E-6177-549C-121DC0453FCC}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

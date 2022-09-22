@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="dearimgui">
+      <UniqueIdentifier>{7C6018E5-E8CA-CC5B-3109-7E019DB2AAB0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dearimgui\backends">
+      <UniqueIdentifier>{262638F9-120A-F94E-7B6A-F3A1676DE3D0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="imguizmo">
+      <UniqueIdentifier>{76AD0322-627A-5E2D-8B93-4CD577BF93BB}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\tools\source\External\dearimgui\backends\imgui_impl_dx11.h">
+      <Filter>dearimgui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\External\dearimgui\backends\imgui_impl_win32.h">
+      <Filter>dearimgui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\External\dearimgui\imconfig.h">
+      <Filter>dearimgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\External\dearimgui\imgui.h">
+      <Filter>dearimgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\External\dearimgui\imgui_internal.h">
+      <Filter>dearimgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\External\dearimgui\imstb_rectpack.h">
+      <Filter>dearimgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\External\dearimgui\imstb_textedit.h">
+      <Filter>dearimgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\External\dearimgui\imstb_truetype.h">
+      <Filter>dearimgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\External\imguizmo\ImGuizmo.h">
+      <Filter>imguizmo</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\tools\source\External\dearimgui\backends\imgui_impl_dx11.cpp">
+      <Filter>dearimgui\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\External\dearimgui\backends\imgui_impl_win32.cpp">
+      <Filter>dearimgui\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\External\dearimgui\imgui.cpp">
+      <Filter>dearimgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\External\dearimgui\imgui_demo.cpp">
+      <Filter>dearimgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\External\dearimgui\imgui_draw.cpp">
+      <Filter>dearimgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\External\dearimgui\imgui_tables.cpp">
+      <Filter>dearimgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\External\dearimgui\imgui_widgets.cpp">
+      <Filter>dearimgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\External\imguizmo\ImGuizmo.cpp">
+      <Filter>imguizmo</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
