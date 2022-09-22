@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="backends">
+      <UniqueIdentifier>{00057006-ECD1-CA11-15EB-B8B9011700A0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\tools\source\External\dearimgui\backends\imgui_impl_dx11.h">
+      <Filter>backends</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\External\dearimgui\backends\imgui_impl_win32.h">
+      <Filter>backends</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tools\source\External\dearimgui\imconfig.h" />
+    <ClInclude Include="..\tools\source\External\dearimgui\imgui.h" />
+    <ClInclude Include="..\tools\source\External\dearimgui\imgui_internal.h" />
+    <ClInclude Include="..\tools\source\External\dearimgui\imstb_rectpack.h" />
+    <ClInclude Include="..\tools\source\External\dearimgui\imstb_textedit.h" />
+    <ClInclude Include="..\tools\source\External\dearimgui\imstb_truetype.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\tools\source\External\dearimgui\backends\imgui_impl_dx11.cpp">
+      <Filter>backends</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\External\dearimgui\backends\imgui_impl_win32.cpp">
+      <Filter>backends</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\External\dearimgui\imgui.cpp" />
+    <ClCompile Include="..\tools\source\External\dearimgui\imgui_demo.cpp" />
+    <ClCompile Include="..\tools\source\External\dearimgui\imgui_draw.cpp" />
+    <ClCompile Include="..\tools\source\External\dearimgui\imgui_tables.cpp" />
+    <ClCompile Include="..\tools\source\External\dearimgui\imgui_widgets.cpp" />
+  </ItemGroup>
+</Project>
