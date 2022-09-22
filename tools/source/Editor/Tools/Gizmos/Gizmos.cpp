@@ -10,6 +10,7 @@
 #include <TransformCommand.h>
 #include <Selection.h>
 
+
 void Gizmos::Draw() {
     ImGui::Begin("gizmos"); {
         if (ImGui::Button("t") || ImGui::IsKeyPressed('Q')) {
@@ -49,7 +50,7 @@ void Gizmos::Draw() {
             Matrix4x4f& proj = camera->get_projection();
 
             // get instance transform
-            Matrix4x4f& transform = mi->GetTransform().GetMatrix();
+            Matrix4x4f& transform = Matrix4x4f::Inverse(mi->GetTransform().GetMatrix());
 
             ImGuizmo::Manipulate(
                 view.GetDataPtr(),
@@ -71,6 +72,7 @@ void Gizmos::Draw() {
             }
 
             if (ImGuizmo::IsUsing()) {
+
                 Vector3f pos, rot, scale;
                 transform.DecomposeMatrix(pos, rot, scale);
 
