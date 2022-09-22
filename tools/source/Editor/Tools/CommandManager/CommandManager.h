@@ -14,11 +14,27 @@ class AbstractCommand;
 
 class CommandManager {
 public:
-	static void DoCommand(AbstractCommand* command);
+	template<typename GenericCommand, typename... CommandArgs>
+	static void DoCommand(CommandArgs&&... someCommandArgs);
+
+
+
 	static void Undo();
 	static void Redo();
 
 private:
-	static std::stack<AbstractCommand*> _undo_stack;
-	static std::stack<AbstractCommand *> _redo_stack;
+	static std::stack<std::shared_ptr<AbstractCommand>> _undo_stack;
+	static std::stack<std::shared_ptr<AbstractCommand>> _redo_stack;
 };
+
+template<typename GenericCommand, typename ...CommandArgs>
+inline void CommandManager::DoCommand(CommandArgs && ...someCommandArgs)
+{
+	
+	_undo_stack.push(std::make_shared<GenericCommand>(std::forward<CommandArgs>(someCommandArgs)...));
+	_undo_stack.top()->Execute();
+	while (!_redo_stack.empty())
+	{
+		_redo_stack.pop();
+	}
+}

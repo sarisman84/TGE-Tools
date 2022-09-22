@@ -27,6 +27,9 @@
     <ClInclude Include="..\tools\source\Editor\Tools\CommandManager\Commands\PositionCommand.h">
       <Filter>Tools\CommandManager\Commands</Filter>
     </ClInclude>
+    <ClInclude Include="..\tools\source\Editor\Tools\CommandManager\Commands\TextureCommand.h">
+      <Filter>Tools\CommandManager\Commands</Filter>
+    </ClInclude>
     <ClInclude Include="..\tools\source\Editor\Tools\ExampleTool\ExampleTool.h">
       <Filter>Tools\ExampleTool</Filter>
     </ClInclude>
@@ -39,6 +42,9 @@
       <Filter>Tools\CommandManager</Filter>
     </ClCompile>
     <ClCompile Include="..\tools\source\Editor\Tools\CommandManager\Commands\PositionCommand.cpp">
+      <Filter>Tools\CommandManager\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tools\source\Editor\Tools\CommandManager\Commands\TextureCommand.cpp">
       <Filter>Tools\CommandManager\Commands</Filter>
     </ClCompile>
     <ClCompile Include="..\tools\source\Editor\Tools\ExampleTool\ExampleTool.cpp">

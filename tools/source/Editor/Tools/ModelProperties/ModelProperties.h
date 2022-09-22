@@ -16,4 +16,5 @@ public:
 private:
 	std::vector<ModelInstance*> _model_list;
 	Vector3f _start_position;
+	std::wstring _og_Texture;
 };

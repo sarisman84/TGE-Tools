@@ -1,4 +1,4 @@
 include ("Engine")
---include ("Projects")
+include ("Projects")
 include ("GameLauncher")
 include ("Editor")

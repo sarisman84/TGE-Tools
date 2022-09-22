@@ -11,12 +11,17 @@
 #include <backends/imgui_impl_dx11.h>
 
 #include <filesystem>
+#include <string>
+#include <iterator>
+#include <sstream>
+#include <vector>
 
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
-class ToolsLauncher : public Application {
+class ToolsLauncher : public Application
+{
 public:
-	ToolsLauncher() : Application()	{
+	ToolsLauncher() : Application() {
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
 		ImGui::StyleColorsDark();
@@ -47,7 +52,7 @@ public:
 
 		myExampleTool->Draw();
 		_model_properties->Draw();
-		
+
 		ImGui::Render();
 		ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 	}
@@ -66,6 +71,29 @@ Application* CreateApplication() {
 	return new ToolsLauncher();
 }
 
+
+const bool FileExists(std::filesystem::path aPath, std::wstring aFileName)
+{
+	using namespace std::filesystem;
+
+	for (auto& file : directory_iterator{ aPath })
+	{
+		if (file.path().filename().wstring() == aFileName)
+			return true;
+	}
+
+
+	return false;
+}
+
+
+
+
+const bool IsFileDDS(std::wstring aFileName)
+{
+	return wcsstr(aFileName.c_str(), L"dds");
+}
+
 LRESULT CALLBACK WinProc(_In_ HWND hWnd, _In_ UINT uMsg, _In_ WPARAM wParam, _In_ LPARAM lParam)
 {
 	if (ImGui_ImplWin32_WndProcHandler(hWnd, uMsg, wParam, lParam))
@@ -82,7 +110,8 @@ LRESULT CALLBACK WinProc(_In_ HWND hWnd, _In_ UINT uMsg, _In_ WPARAM wParam, _In
 		CREATESTRUCT* createdStruct = reinterpret_cast<CREATESTRUCT*>(lParam);
 		windowHandler = static_cast<WindowHandler*>(createdStruct->lpCreateParams);
 	}
-	else if (uMsg == WM_DROPFILES) {
+	else if (uMsg == WM_DROPFILES)
+	{
 		HDROP drop = (HDROP)wParam;
 		UINT num_paths = DragQueryFileW(drop, 0xFFFFFFFF, 0, 512);
 
@@ -99,12 +128,15 @@ LRESULT CALLBACK WinProc(_In_ HWND hWnd, _In_ UINT uMsg, _In_ WPARAM wParam, _In
 		asset_dir += "/Textures/";
 		asset_dir.auto_format();
 
-		for (UINT i = 0; i < num_paths; ++i) {
+		for (UINT i = 0; i < num_paths; ++i)
+		{
 			UINT filename_len = DragQueryFileW(drop, i, nullptr, 512) + 1;
-			if (filename_len > max_filename_len) {
+			if (filename_len > max_filename_len)
+			{
 				max_filename_len = filename_len;
-				wchar_t *tmp = (wchar_t*)realloc(filename, max_filename_len * sizeof(*filename));
-				if (tmp != nullptr) {
+				wchar_t* tmp = (wchar_t*)realloc(filename, max_filename_len * sizeof(*filename));
+				if (tmp != nullptr)
+				{
 					filename = tmp;
 				}
 			}
@@ -129,6 +161,17 @@ LRESULT CALLBACK WinProc(_In_ HWND hWnd, _In_ UINT uMsg, _In_ WPARAM wParam, _In
 			//
 			//	Nu är det dags att lägga till koden som saknas här:
 			//	DoStuff();
+
+			using Path = std::filesystem::path;
+			Path filepath = { filename };
+			
+			if (FileExists(asset_dir, filepath.filename().wstring())) continue;
+			if (!IsFileDDS(filename)) continue;
+
+			
+			Path target = { asset_dir.c_str() + filepath.filename().wstring() };
+
+			std::filesystem::copy_file(filepath, target);
 
 		}
 		free(filename);

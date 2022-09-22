@@ -24,7 +24,7 @@ public:
 	);
 	~PositionCommand() override;
 
-	bool Exectue() override;
+	bool Execute() override;
 	bool Undo() override;
 
 private:

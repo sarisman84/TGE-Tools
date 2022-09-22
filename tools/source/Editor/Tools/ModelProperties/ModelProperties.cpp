@@ -11,8 +11,9 @@
 
 #include <CommandManager.h>
 #include <Commands/PositionCommand.h>
+#include <TextureCommand.h>
 
-ModelProperties::ModelProperties(std::vector<ModelInstance*> &model_list) : _model_list(model_list) {
+ModelProperties::ModelProperties(std::vector<ModelInstance*>& model_list) : _model_list(model_list) {
 
 }
 
@@ -40,51 +41,62 @@ void ModelProperties::Draw() {
 	//			Ni behöver implementera det som saknas för Location, tomma implementationer finns redan, och ni bör till och med få kommandon redan (som inte gör nått)
 	//			Ni behöver implementera hela TextureCommand själva, men fråga om det behövs!
 
-	ImGui::Begin("Models"); {
+	ImGui::Begin("Models");
+	{
 		// @todo: <info> CommandManager håller koll på alla kommandon som utförs! Den är statisk så väldigt smidig att använda, och kommer att gå att använda även i andra
 		// verktyg. Funktionalliteten i Undo() och Redo() behöver ni implementera, titta i CommandManager.cpp så står det mer där :)
-		if (ImGui::Button("Undo")) {
+		if (ImGui::Button("Undo"))
+		{
 			CommandManager::Undo();
 		}
-		else if (ImGui::Button("Redo")) {
+		else if (ImGui::Button("Redo"))
+		{
 			CommandManager::Redo();
 		}
 
-		for (int i=0; i<_model_list.size(); i++) {
+		for (int i = 0; i < _model_list.size(); i++)
+		{
 			ImGui::PushID(i);
 			std::string s = "object_" + std::to_string(i);
-			if (ImGui::CollapsingHeader(s.c_str())) {
+			if (ImGui::CollapsingHeader(s.c_str()))
+			{
 				ModelInstance* mi = _model_list[i];
 				Transform t = mi->GetTransform();
 				auto pos = t.GetPosition();
 				std::string label = i + "Translation: ";
 
-				if (ImGui::DragFloat3("Translation: ", pos.data(), 0.01f)) {
+				if (ImGui::DragFloat3("Translation: ", pos.data(), 0.01f))
+				{
 					mi->SetLocation(pos);
 				}
-				if (ImGui::IsItemActivated()) {
+				if (ImGui::IsItemActivated())
+				{
 					// @todo: <info> Om vi precis börjat editera den här framen, så vill vi komma ihåg vart vi var, det är för att det är där vi kommer vara
 					// innan vi utförde vårt kommando, vi vill inte göra kommandon för varje uppdatering, då blir det mycket små steg i vår undo/redo!
 					_start_position = mi->GetTransform().GetPosition();
-				} else if (ImGui::IsItemDeactivatedAfterEdit()) {
+				}
+				else if (ImGui::IsItemDeactivatedAfterEdit())
+				{
 					// @todo: <info> 
 					//		När vi slutat editera (just den här kontrollen kan vi dra i, så när vi inte längre drar i den...)
 					//		Ja då är det läge att skicka vårt kommando. Den observante läsaren ser att här läcker jag minne!
 					//		Hur kunde jag enkelt löst det? Fundera så svarar jag lite senare ;)
-					CommandManager::DoCommand(new PositionCommand(mi, _start_position, pos));
+
+					
+					CommandManager::DoCommand<PositionCommand>(mi, _start_position, pos);
 				}
 
 				// @todo: <info>
 				//		Här händer det en del, först och främst, så hämtar vi ut aktiv textur från modellen, och bara ritar ut den i interfacet
 				//		Mer kul än användbart, men det finns en hel del vi kan göra med det.
 				ImGui::Image((ImTextureID)mi->GetModel()->GetModelData()->texture, ImVec2(32, 32));
-				
+
 				// @todo: <info>
 				//		Sen plockar vi ut vår game_assets path och itererar över alla filer (vilket bör vara bara .dds).
 				//		Jag kontrollerar inte här om det är .ddser, men att göra det bör vara enkelt med hjälp av std::filesystem::path! om man vill ^^
 				std::filesystem::path texture_path = Settings::paths["game_assets"] + "/Textures";
 				static std::vector<std::string> current_items(_model_list.size());
-				
+
 				// @todo: <info>
 				//		Anledningen att vi plockar ut filnamnen, är att lägga dem i en Combo (drop-down) så att vi kan lista filerna, och då blir det lite roligare
 				//		när vi löst pt.1 och kan droppa in nya filer. Då vi bara listar alla filer här bör uppdateringen synas omgående.
@@ -95,27 +107,51 @@ void ModelProperties::Draw() {
 				//
 				//		Vidare, så behöver textur-bytet spawna ett TextureCommand som gör det åt oss, just nu finns inte det, och här är det just det som är 
 				//		uppgiften. Impelemnetera ett sådant kommando och lägg till det på rätt sätt.
+
+				std::wstring newTexture;
 				std::string current_item = current_items[i];
-				if (ImGui::BeginCombo("##combo", current_item.c_str())) {
-					for (auto const& item : std::filesystem::directory_iterator(texture_path)) {
+				if (ImGui::BeginCombo("##combo", current_item.c_str()))
+				{
+					for (auto const& item : std::filesystem::directory_iterator(texture_path))
+					{
 						std::string filename = item.path().filename().string();
 						bool is_selected = (filename.c_str() == current_item);
-						if (ImGui::Selectable(filename.c_str(), is_selected)) {
+						if (ImGui::Selectable(filename.c_str(), is_selected))
+						{
 							current_items[i] = filename.c_str();
-							mi->GetModel()->set_texture(item.path().filename().wstring(), Settings::paths["game_assets"]);
+							newTexture = item.path().filename().wstring();
+							mi->GetModel()->set_texture(newTexture, Settings::paths["game_assets"]);
+
+
 						}
-						if (is_selected) {
+						if (is_selected)
+						{
 							ImGui::SetItemDefaultFocus();
 						}
+						if (ImGui::IsItemActivated())
+						{
+							_og_Texture = mi->GetModel()->GetModelData()->texture_name;
+						}
+						else if (ImGui::IsItemDeactivatedAfterEdit())
+						{
+							// @todo: <info> 
+							//		När vi slutat editera (just den här kontrollen kan vi dra i, så när vi inte längre drar i den...)
+							//		Ja då är det läge att skicka vårt kommando. Den observante läsaren ser att här läcker jag minne!
+							//		Hur kunde jag enkelt löst det? Fundera så svarar jag lite senare ;)
+							CommandManager::DoCommand<TextureCommand>(mi, _og_Texture, newTexture, current_items[i]);
+							
+						}
+
 					}
 					ImGui::EndCombo();
-				}				
+				}
+
 			}
 			ImGui::PopID();
 		}
-		
+
 	} ImGui::End();
 
-	
+
 }
 

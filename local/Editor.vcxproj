@@ -25,19 +25,19 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Distribution|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -116,12 +116,14 @@
     <ClInclude Include="..\tools\source\Editor\Tools\CommandManager\AbstractCommand.h" />
     <ClInclude Include="..\tools\source\Editor\Tools\CommandManager\CommandManager.h" />
     <ClInclude Include="..\tools\source\Editor\Tools\CommandManager\Commands\PositionCommand.h" />
+    <ClInclude Include="..\tools\source\Editor\Tools\CommandManager\Commands\TextureCommand.h" />
     <ClInclude Include="..\tools\source\Editor\Tools\ExampleTool\ExampleTool.h" />
     <ClInclude Include="..\tools\source\Editor\Tools\ModelProperties\ModelProperties.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\tools\source\Editor\Tools\CommandManager\CommandManager.cpp" />
     <ClCompile Include="..\tools\source\Editor\Tools\CommandManager\Commands\PositionCommand.cpp" />
+    <ClCompile Include="..\tools\source\Editor\Tools\CommandManager\Commands\TextureCommand.cpp" />
     <ClCompile Include="..\tools\source\Editor\Tools\ExampleTool\ExampleTool.cpp" />
     <ClCompile Include="..\tools\source\Editor\Tools\ModelProperties\ModelProperties.cpp" />
     <ClCompile Include="..\tools\source\Editor\ToolsLauncherApp.cpp" />
