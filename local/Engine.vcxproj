@@ -174,11 +174,11 @@
   <ItemGroup>
     <FxCompile Include="..\tools\source\Engine\Shaders\PixelShader.ps.hlsl">
       <ShaderType>Pixel</ShaderType>
-      <ObjectFileOutput>D:\Projects\Git\TGE-Tools\tools\EngineResources/Assets/Shaders/PixelShader.ps.cso</ObjectFileOutput>
+      <ObjectFileOutput>D:\Git\TGE-Tools\tools\EngineResources/Assets/Shaders/PixelShader.ps.cso</ObjectFileOutput>
     </FxCompile>
     <FxCompile Include="..\tools\source\Engine\Shaders\VertexShader.vs.hlsl">
       <ShaderType>Vertex</ShaderType>
-      <ObjectFileOutput>D:\Projects\Git\TGE-Tools\tools\EngineResources/Assets/Shaders/VertexShader.vs.cso</ObjectFileOutput>
+      <ObjectFileOutput>D:\Git\TGE-Tools\tools\EngineResources/Assets/Shaders/VertexShader.vs.cso</ObjectFileOutput>
       <AdditionalOptions>/WX %(AdditionalOptions)</AdditionalOptions>
     </FxCompile>
   </ItemGroup>

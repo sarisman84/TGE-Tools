@@ -15,83 +15,36 @@
 
 
 
-/*
-	const bool is_selected = (Selection::GetSelection() == anInstance);
-	std::string id = anInstance->GetModel()->GetPath();
-	id += "_" + std::to_string(anIndex);
-	if (!someExtraData.empty())
-		id += someExtraData;
 
-
-	if (ImGui::BeginDragDropTarget())
-	{
-		if (const ImGuiPayload* load = ImGui::AcceptDragDropPayload("Transform"))
-		{
-			IM_ASSERT(load->DataSize == sizeof(int));
-			int dragN = *(const int*)load->Data;
-
-
-			ModelInstance* child = someModels[dragN];
-
-			anInstance->GetTransform().AddChild(&child->GetTransform());
-
-			//someModels.erase(std::remove(someModels.begin(), someModels.end(), child), someModels.end());
-
-		}
-
-		ImGui::EndDragDropTarget();
-	}
-
-
-
-
-
-	if (ImGui::Selectable(id.c_str(), is_selected))
-	{
-		CommandManager::DoCommand(std::make_unique<SelectionCommand>(anInstance));
-	}
-*/
-
-
-//std::vector<SceneElement> ConstructElements(const Scene* aScene)
-//{
-//	std::vector<SceneElement> result;
-//	auto instances = &aScene->SceneModels();
-//	for (size_t i = 0; i < instances->size(); i++)
-//	{
-//		
-//
-//		result.emplace_back(i, id, instances);
-//	}
-//
-//	return result;
-//}
 
 void InspectElement(const int anIndex, std::vector<ModelInstance*> someInstances)
 {
 	auto element = someInstances[anIndex];
-	if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None))
-	{
-		ImGui::SetDragDropPayload("Transform", &anIndex, sizeof(int));
+	
+	
 
-
-		ImGui::EndDragDropSource();
-	}
-
+	
 	const bool is_selected = (Selection::GetSelection() == element);
 	if (ImGui::Selectable(element->GetID().c_str(), is_selected))
 	{
 		CommandManager::DoCommand(std::make_unique<SelectionCommand>(element));
 	}
 
+	if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None))
+	{
+		ImGui::SetDragDropPayload("PARENT", &anIndex, sizeof(int));
+
+
+		ImGui::EndDragDropSource();
+	}
+
+
 	if (ImGui::BeginDragDropTarget())
 	{
-		if (const ImGuiPayload* load = ImGui::AcceptDragDropPayload("Transform"))
+		if (const ImGuiPayload* load = ImGui::AcceptDragDropPayload("PARENT"))
 		{
 			IM_ASSERT(load->DataSize == sizeof(int));
 			int dragN = *(const int*)load->Data;
-
-			dragN = Math::Clamp(dragN - 1, 0, static_cast<int>(someInstances.size() - 1));
 			ModelInstance* child = someInstances[dragN];
 
 			child->SetParent(element);
@@ -102,7 +55,6 @@ void InspectElement(const int anIndex, std::vector<ModelInstance*> someInstances
 		ImGui::EndDragDropTarget();
 
 	}
-
 
 	auto children = element->GetChildren();
 	for (auto& child : children)
@@ -115,6 +67,8 @@ void InspectElement(const int anIndex, std::vector<ModelInstance*> someInstances
 		ImGui::Unindent();
 	}
 
+	
+	
 
 
 
@@ -148,7 +102,10 @@ void ScenenHierarchy::Draw() {
 
 					InspectElement(n, instances);
 
+					
 
+
+					
 					
 
 				}

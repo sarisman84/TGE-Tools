@@ -42,7 +42,7 @@ public:
 
 	inline void SetParent(ModelInstance* aParent)
 	{
-		if (aParent == this) return;
+		if (aParent == this || aParent == _parent) return;
 
 		if (_parent)
 		{
