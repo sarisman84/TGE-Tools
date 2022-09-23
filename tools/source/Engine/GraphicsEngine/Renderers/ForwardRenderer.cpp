@@ -60,7 +60,7 @@ void ForwardRenderer::Render(const Camera* camera, const std::vector<ModelInstan
 		Model* model = model_instance->GetModel();
 		const Model::ModelData *model_data = model->GetModelData();
 
-		_object_buffer_data.to_world = model_instance->GetTransform().GetMatrix();
+		_object_buffer_data.to_world = model_instance->GetWorldMatrix();
 		_object_buffer_data.selected = model_instance->GetSelected();
 		ZeroMemory(&buffer_data, sizeof(D3D11_MAPPED_SUBRESOURCE));
 		result = context->Map(_object_buffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &buffer_data);

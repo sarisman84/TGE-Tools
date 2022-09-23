@@ -17,11 +17,6 @@ private:
 	Vector3f myPosition = Vector3f::Zero;
 	Rotator myRotation = Vector3f::Zero;
 	Vector3f myScale = Vector3f::One;
-	Transform* myParent = nullptr;
-	std::vector<Transform*> myChildren;
-
-	void* myOwner = nullptr;
-	const std::type_info* myOwnerType;
 
 public:
 
@@ -33,23 +28,27 @@ public:
 	void SetRotation(Rotator someRotation);
 	void SetScale(Vector3f someScale);
 
-	inline void SetParent(Transform& aParent) {
-		myParent = &aParent;
-	}
 
-
-	inline const int HasParent(int count = 0) {
-		if (myParent)
-			return myParent->HasParent(count + 1);
-
-		return count;
-	}
 
 	Vector3f GetPosition() { return myPosition; }
 	Rotator GetRotation() { return myRotation; }
 	Vector3f GetScale() { return myScale; }
 
 	void AddRotation(Rotator someRotation);
+
+	FORCEINLINE Transform& SetMatrix(const Matrix4x4f& aNewMatrix)
+	{
+		Vector3f pos, rot, scale;
+
+		aNewMatrix.DecomposeMatrix(pos, rot, scale);
+
+		myScale = scale;
+		myRotation = rot;
+		myPosition = pos;
+
+		return *this;
+	}
+
 
 	FORCEINLINE Matrix4x4f GetMatrix(bool bNoScale = false) const
 	{
@@ -64,34 +63,11 @@ public:
 		Result *= Matrix4x4f::CreateTranslationMatrix(myPosition);
 
 
-		if (myParent)
-		{
-			Result *= myParent->GetMatrix(bNoScale);
-		}
-
 		return Result;
 	}
 
-	inline Transform* GetParent() noexcept {
-		return myParent;
-	}
-
-	inline std::vector<Transform*>& GetChildren() noexcept {
-		return myChildren;
-	}
-
-	inline void AddChild(Transform* aTransform)
-	{
-		if (aTransform->GetParent())
-		{
-			auto& children = aTransform->GetParent()->GetChildren();
-			children.erase(std::remove(children.begin(), children.end(), aTransform), children.end());
-		}
 
 
-		aTransform->SetParent(*this);
-		myChildren.push_back(aTransform);
-	}
 
 
 	FORCEINLINE VectorRegister VectorTransformVector(const VectorRegister& VecP, const void* MatrixM) const
@@ -139,23 +115,6 @@ public:
 
 
 
-	template<typename Owner>
-	void AssignOwner(Owner* anInstance)
-	{
-		if (!anInstance) return;
-
-		myOwnerType = &typeid(Owner);
-		myOwner = (void*)anInstance;
-	}
-
-
-
-	template<typename Owner>
-	Owner* GetOwner() {
-
-		if (!myOwner || !myOwnerType || typeid(Owner) != *myOwnerType) return nullptr;
-		return (Owner*)myOwner;
-	}
 };
 
 #undef SHUFFLEMASK

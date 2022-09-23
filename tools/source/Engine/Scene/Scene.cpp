@@ -20,6 +20,7 @@ Scene::~Scene() {
 
 ModelInstance *Scene::create_model_instance(const char* path) {
 	_models.push_back(new ModelInstance(std::move(_model_factory->create_instance(path))));
+	_models.back()->SetSceneIndex(_models.size() - 1);
 	return _models.back();
 
 //	_models.push_back(new ModelInstance(std::move(*aModelInstance)));

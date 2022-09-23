@@ -10,21 +10,6 @@ class ModelInstance
 public:
 	ModelInstance(Model* model);
 
-	ModelInstance(const ModelInstance& anInstance)
-	{
-		_model = anInstance._model;
-		_transform = anInstance._transform;
-		_transform.AssignOwner(this);
-		_selected = anInstance._selected;
-	}
-	void operator=(const ModelInstance& anInstance)
-	{
-		_model = anInstance._model;
-		_transform = anInstance._transform;
-		_transform.AssignOwner(this);
-		_selected = anInstance._selected;
-	}
-
 
 	Model* GetModel() const;
 
@@ -43,11 +28,55 @@ public:
 
 	inline const int GetSceneIndex() const noexcept { return _sceneIndex; }
 
+
+
+	inline ModelInstance* GetParent() noexcept
+	{
+		return _parent;
+	}
+
+
+	inline std::vector<ModelInstance*> GetChildren() {
+		return _children;
+	}
+
+	inline void SetParent(ModelInstance* aParent)
+	{
+		if (aParent == this) return;
+
+		if (_parent)
+		{
+			_parent->_children.erase(std::remove(_parent->_children.begin(), _parent->_children.end(), this), _parent->_children.end());
+		}
+
+		_parent = aParent;
+		aParent->_children.push_back(this);
+
+		_transform.SetMatrix(GetLocalMatrix() * Matrix4x4f::Inverse(_parent->GetWorldMatrix()));
+
+	}
+
+
+
+
+	std::string GetID();
+	Matrix4x4f GetLocalMatrix();
+	Matrix4x4f GetWorldMatrix();
+
+	void ApplyMatrix4x4f(Matrix4x4f aMatrix);
+
 private:
+
+
+
+
+
 
 	Model* _model{};
 	Transform _transform{};
 	bool _selected = false;
 	int _sceneIndex;
+	ModelInstance* _parent;
+	std::vector<ModelInstance*> _children;
 };
 

@@ -6,7 +6,11 @@
 class Scene;
 struct Transform;
 
-class ScenenHierarchy : public ToolsInterface {
+
+
+
+class ScenenHierarchy : public ToolsInterface
+{
 public:
 	ScenenHierarchy(Scene* aScene) : myScene(aScene) {}
 
