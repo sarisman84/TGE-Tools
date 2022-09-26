@@ -46,6 +46,8 @@ public:
 
 		Matrix4x4f newMatrix;
 
+		Matrix4x4f newMatrix;
+
 		if (_parent)
 		{
 
