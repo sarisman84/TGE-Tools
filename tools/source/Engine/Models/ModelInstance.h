@@ -44,15 +44,20 @@ public:
 	{
 		if (aParent == this || aParent == _parent) return;
 
+		Matrix4x4f newMatrix;
+
 		if (_parent)
 		{
+
 			_parent->_children.erase(std::remove(_parent->_children.begin(), _parent->_children.end(), this), _parent->_children.end());
+
 		}
 
 		_parent = aParent;
+		newMatrix = GetLocalMatrix() * Matrix4x4f::Inverse(_parent->GetWorldMatrix());
 		aParent->_children.push_back(this);
+		_transform.SetMatrix(newMatrix);
 
-		_transform.SetMatrix(GetLocalMatrix() * Matrix4x4f::Inverse(_parent->GetWorldMatrix()));
 
 	}
 

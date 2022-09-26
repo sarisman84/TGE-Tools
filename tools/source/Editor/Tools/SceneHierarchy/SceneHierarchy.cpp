@@ -20,10 +20,8 @@
 void InspectElement(const int anIndex, std::vector<ModelInstance*> someInstances)
 {
 	auto element = someInstances[anIndex];
-	
-	
 
-	
+
 	const bool is_selected = (Selection::GetSelection() == element);
 	if (ImGui::Selectable(element->GetID().c_str(), is_selected))
 	{
@@ -45,6 +43,8 @@ void InspectElement(const int anIndex, std::vector<ModelInstance*> someInstances
 		{
 			IM_ASSERT(load->DataSize == sizeof(int));
 			int dragN = *(const int*)load->Data;
+
+			//dragN = Math::Clamp(dragN - 1, 0, static_cast<int>(someInstances.size() - 1));
 			ModelInstance* child = someInstances[dragN];
 
 			child->SetParent(element);
